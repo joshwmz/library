@@ -1,0 +1,107 @@
+* {
+    font-family: 'Roboto', sans-serif; 
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+	background-color: #000000;
+}
+
+.header {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.container {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .add {
+    background-color: #000000;
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    height: 60px;
+    width: clamp(350px, 90vw, 650px);
+    margin: 20px 0px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.container .add:hover {
+    opacity: 0.8;
+}
+
+.container .add:active {
+    opacity: 0.6;
+}
+
+.container .content {
+    border: 2px solid #000000;
+    border-radius: 15px;
+    height: clamp(400px, 70vh, 800px);
+    width: clamp(350px, 90vw, 650px);
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 100px);
+    overflow: auto;
+}
+
+.container .content .book { /* books to be added with JS */
+    border-bottom: 2px solid #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.container .content .book .book-info {
+    /* grid-column: 1 / 2; */
+    padding: 0px 10px;
+}
+
+.container .content .book .book-info .author {
+    color: #6e6e6e;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.container .content .book .book-status {
+    /* grid-column: 2 / 3; */
+    padding: 0px 10px;
+    justify-self: end;
+}
+
+.container .content .book .book-status .read {
+    background-color: orange;
+    border-radius: 4px;
+    color: white;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+footer {
+    color: #000000;
+    font-size: 0.8rem;
+    padding: 10px;
+    text-align: center;
+}
+
+#github {
+    color: #000000;
+}
