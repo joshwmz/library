@@ -13,24 +13,50 @@
     <title>Library</title>
 </head>
 <body>
-    <div class="header">Your Library</div>
+
+    <div class="header">📚 Your Library</div>
     <div class="container">
         <button class="add">Add book</button>
-        <div class="content">
-            <div class="book">
-                <div class="book-info">
-                    <div class="title">Harry Potter and the Philosopher's Stone</div>
-                    <div class="author">J. K. Rowling</div>
-                </div>
-                <div class="book-status">
-                    <div class="pages">Page: 102</div>
-                    <div class="read">In progress</div>
-                </div>
-            </div>
+        <div class="content" id="content">
+            <!-- dynamic input from JS -->
+        </div>
         </div>
     </div>
     <footer>
         <p>Copyright © 2023 joshwmz <a href="https://github.com/joshwmz" target="_blank"><i class="fa fa-github" id="github"></i></a></p>
     </footer>
+
+    <!-- pop up form -->
+    <div class="form-container">
+        <div class="form-window">
+            <button><img src="assets/window-close.svg" alt="close form" class="close"></button>
+            <form action="" method="get" class="add-book-form" autocomplete="off">
+                <ul>
+                    <li>
+                        <div class="label-box"><label for="title">Title</label></div>
+                        <input id="title" name="title" placeholder="Dune" type="text">
+                    </li>
+                    <li>
+                        <div class="label-box"><label for="author">Author</label></div>
+                        <input id="author" name="author" placeholder="Frank Herbert" type="text">
+                    </li>
+                    <li>
+                        <div class="label-box"><label for="pages">Pages</label></div>
+                        <input id="pages" name="pages" placeholder="20" type="number">
+                    </li>
+                    <li>
+                        <div class="label-box"><label for="status">Status</label></div>
+                        <select name="status" id="status">
+                            <option value="Not started">Not started</option>
+                            <option value="In progress">In progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </li>
+                </ul>
+                <button class="done" type="submit">Done</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
