@@ -68,11 +68,10 @@ library.addEventListener('click', (e) => {
 
     // FEATURE: Remove book from library
     
-    let bookIndex = e.target.id;
-    deleteThis.innerHTML = myLibrary[bookIndex].title;
-
     if (e.target.className == 'bin') {
-
+        
+        let bookIndex = e.target.id;
+        deleteThis.innerHTML = myLibrary[bookIndex].title;
         deleteContainer.style.display = 'grid';
 
         deleteConfirm.addEventListener('click', () => {
