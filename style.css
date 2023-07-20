@@ -95,8 +95,10 @@ button {
 }
 
 .container .content .book .right-content .book-status .read-status {
+    border: none;
     border-radius: 4px;
     color: white;
+    font-size: 1rem;
     margin-top: 5px;
     padding: 5px;
 }
@@ -115,13 +117,13 @@ button {
     background-color: green;
 }
 
-.container .content .book .right-content button {
+.container .content .book .right-content .bin-button {
     background-color: white;
     border: none;
     margin-left: 20px;
 }
 
-.container .content .book .right-content button .bin {
+.container .content .book .right-content .bin-button .bin {
     height: 32px;
     width: auto;
 }
@@ -164,7 +166,7 @@ footer {
     align-self: center;
 }
 
-.form-window button .close {
+.form-window button .close-form {
     height: 24px;
     width: auto;
 }
@@ -214,5 +216,74 @@ footer {
 }
 
 .form-window .add-book-form .done:active {
+    opacity: 0.6;
+}
+
+/* pop up delete confirmation */
+
+.delete-container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: none;
+    grid-template-rows: 3fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.delete-window {
+    background-color: white;
+    border: 2px solid #000000;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr;
+}
+
+.delete-window > button {
+    background-color: white;
+    border: none;
+    justify-self: end;
+    align-self: center;
+}
+
+.delete-window button .close-delete {
+    height: 24px;
+    width: auto;
+}
+
+.delete-confirmation {
+    display: inline-block;
+    margin: 30px; 
+}
+
+.delete-confirmation .delete-this {
+    font-style: italic;
+}
+
+.delete-window .options {
+    justify-self: center;
+    margin-top: 30px;
+}
+
+.delete-window .options button {
+    justify-self: center;
+    align-self: center;
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    padding: 6px 24px;
+}
+
+.delete-window .options #delete-cancel {
+    margin-left: 20px;
+}
+
+.delete-window .options button:hover {
+    opacity: 0.8;
+}
+
+.delete-window .options button:active {
     opacity: 0.6;
 }

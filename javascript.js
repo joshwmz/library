@@ -1,22 +1,28 @@
 // Declare variables
 
-const library = document.querySelector('.content');
+const library = document.getElementById('content');
 const addButton = document.querySelector('.add');
-const closeButton = document.querySelector('.close');
+const closeAddPopUp = document.querySelector('.close-form');
 const formContainer = document.querySelector('.form-container');
 const addBookForm = document.querySelector('.add-book-form');
 const removes = document.getElementsByClassName('delete');
+const deleteContainer = document.querySelector('.delete-container');
+const deleteThis = document.querySelector('.delete-this');
+const deleteConfirm = document.getElementById('delete-confirm');
+const deleteCancel = document.getElementById('delete-cancel');
+const closeDeletePopUp = document.querySelector('.close-delete');
 let myLibrary = [];
-
+const bookStatus = [['not-started', 'in-progress', 'completed'],['Not started', 'In progress', 'Completed']];
 
 
 //  FEATURE: Toggle add-book-form
 
 addButton.addEventListener('click', () => {
-    formContainer.style.display = 'grid';  
+    formContainer.style.display = 'grid';
+    addBookForm.elements["title"].focus();
 });
 
-closeButton.addEventListener('click', () => {
+closeAddPopUp.addEventListener('click', () => {
     formContainer.style.display = 'none';
 });
 
@@ -26,15 +32,15 @@ closeButton.addEventListener('click', () => {
 
     // sample of books
 
-    // const hp = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', '102', 'Completed')
-    // const deepWork = new Book('Deep Work', 'Cal Newport', '28', 'In progress');
-    // const dune = new Book('Dune', 'Frank Herbert', '35', 'In progress');
+    const hp = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', '102', 'Completed')
+    const deepWork = new Book('Deep Work', 'Cal Newport', '28', 'In progress');
+    const dune = new Book('Dune', 'Frank Herbert', '35', 'In progress');
 
-    // myLibrary.unshift(deepWork);
-    // myLibrary.unshift(dune);
-    // myLibrary.unshift(hp);
+    myLibrary.unshift(deepWork);
+    myLibrary.unshift(dune);
+    myLibrary.unshift(hp);
 
-    // addBookToLibrary(myLibrary);
+    addBookToLibrary(myLibrary);
 
 addBookForm.addEventListener('submit', (event) => {
     
@@ -56,14 +62,52 @@ addBookForm.addEventListener('submit', (event) => {
 
 
 
-// FEATURE: Remove book from library (event delegation)
+// Library event delegation
 
-document.getElementById('content').addEventListener('click', (e) => {
+library.addEventListener('click', (e) => {
+
+    // FEATURE: Remove book from library
+    
+    let bookIndex = e.target.id;
+    deleteThis.innerHTML = myLibrary[bookIndex].title;
+
     if (e.target.className == 'bin') {
-        console.log(e.target.id);
-        delete myLibrary[e.target.id];
-        addBookToLibrary(myLibrary);
+
+        deleteContainer.style.display = 'grid';
+
+        deleteConfirm.addEventListener('click', () => {
+            deleteContainer.style.display = 'none';
+            delete myLibrary[e.target.id];
+            addBookToLibrary(myLibrary);
+        });
+
+        deleteCancel.addEventListener('click', () => {
+            deleteContainer.style.display = 'none';
+        })
+
+        closeDeletePopUp.addEventListener('click', () => {
+            deleteContainer.style.display = 'none';
+        })
+
     }
+
+    // FEATURE: Edit book status
+
+    if (e.target.classList.contains('read-status')) {
+        
+        let status = e.target.className.replace('read-status ', '');
+        let statusIndex = bookStatus[0].indexOf(status);
+
+        if (statusIndex == '2') {
+            e.target.setAttribute('class', `read-status ${bookStatus[0][0]}`);
+            e.target.innerHTML = `${bookStatus[1][0]}`
+        } else {
+            e.target.setAttribute('class', `read-status ${bookStatus[0][statusIndex + 1]}`);
+            e.target.innerHTML = `${bookStatus[1][statusIndex + 1]}`
+        }
+        
+    }
+    
 });
 
 
@@ -106,10 +150,10 @@ function addBookToLibrary(myLibrary) {
                         </div>\
                         <div class="right-content">\
                             <div class="book-status">\
-                                <div class="pages">Page: ${myLibrary[myBook].pages}</div>\
-                                <div class="read-status ${status}">${myLibrary[myBook].read}</div>\
+                                <div class="pages">Pages: ${myLibrary[myBook].pages}</div>\
+                                <button class="read-status ${status}">${myLibrary[myBook].read}</button>\
                             </div>\
-                            <button><img src="assets/trash-can-outline.svg" alt="delete book" class="bin" id="${bookIndex}"></button>\
+                            <button class="bin-button"><img src="assets/trash-can-outline.svg" alt="delete book" class="bin" id="${bookIndex}"></button>\
                         </div>\
                     </div>`;
         

@@ -29,7 +29,7 @@
     <!-- pop up form -->
     <div class="form-container">
         <div class="form-window">
-            <button><img src="assets/window-close.svg" alt="close form" class="close"></button>
+            <button><img src="assets/window-close.svg" alt="close form" class="close-form"></button>
             <form action="" method="get" class="add-book-form" autocomplete="off">
                 <ul>
                     <li>
@@ -55,6 +55,20 @@
                 </ul>
                 <button class="done" type="submit">Done</button>
             </form>
+        </div>
+    </div>
+
+    <!-- pop up delete confirmation -->
+    <div class="delete-container">
+        <div class="delete-window">
+            <button><img src="assets/window-close.svg" alt="close popup" class="close-delete"></button>
+            <div class="delete-confirmation">
+                Are you sure you want to remove <a class="delete-this"></a>?
+            </div>
+            <div class="options">
+                <button id="delete-confirm">Confirm</button>
+                <button id="delete-cancel">Cancel</button>
+            </div>
         </div>
     </div>
 
