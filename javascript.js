@@ -15,6 +15,17 @@ let myLibrary = [];
 const bookStatus = [['not-started', 'in-progress', 'completed'],['Not started', 'In progress', 'Completed']];
 
 
+// ADDITION: Book class
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
+
 //  FEATURE: Toggle add-book-form
 
 addButton.addEventListener('click', () => {
@@ -28,13 +39,13 @@ closeAddPopUp.addEventListener('click', () => {
 
 
 
-//  FEATURE: Add books to library
+//  FEATURE: Add books to library (with classes!)
 
     // sample of books
 
-    const hp = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', '102', 'Completed')
-    const deepWork = new Book('Deep Work', 'Cal Newport', '28', 'In progress');
-    const dune = new Book('Dune', 'Frank Herbert', '35', 'In progress');
+    const hp = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', '352', 'Completed')
+    const deepWork = new Book('Deep Work', 'Cal Newport', '305', 'In progress');
+    const dune = new Book('Dune', 'Frank Herbert', '608', 'Not started');
 
     myLibrary.unshift(deepWork);
     myLibrary.unshift(dune);
@@ -125,13 +136,6 @@ if (library.childElementCount >= 8) {
 
 
 // Functions
-
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-}
 
 function addBookToLibrary(myLibrary) {
 
